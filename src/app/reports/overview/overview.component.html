@@ -1,0 +1,36 @@
+<h2>Dashboard</h2>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div fxLayout="row" fxLayoutGap="20px">
+        <br>
+        <div class="form-group small-tbox">
+            <p-dropdown formControlName="projectName" placeholder="Project Name" [options]="projectNames"  [editable]="true"></p-dropdown>
+        </div>
+        <br>
+        <div class="form-group small-tbox">
+            <p-calendar type="date" id="startDate" placeholder="Start Date" dateFormat="dd.mm.yy" class="form-control"
+                formControlName="startDate" />
+        </div>
+        <br>
+        <div class="form-group small-tbox">
+            <p-calendar type="date" id="endDate" placeholder="End Date" dateFormat="dd.mm.yy" class="form-control"
+                formControlName="endDate" />
+        </div>
+        <div class="small-button">
+            <button type="submit" pButton label="Apply"></button>
+        </div>
+    </div>
+</form>
+<br>
+<div *ngIf="this.isLoading">
+    <div class="spinner"><app-loading-spinner></app-loading-spinner></div>
+</div>
+<div *ngIf="!this.isLoading" style="margin-top: 5px;" fxLayout="column" fxLayoutGap="20px">
+    <div style="margin-top: 5px;" fxLayout="column" fxLayoutGap="50px">
+        <p-chart type="bar" [data]="executionschartData" height="350px" style="width: 100%"></p-chart>
+        <p-chart type="bar" [data]="monthlyexecutionChartData" height="350px"
+            style="width: 100%"></p-chart>
+    </div>
+</div>
+
+
+

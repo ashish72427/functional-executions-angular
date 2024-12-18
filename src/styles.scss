@@ -1,0 +1,455 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+
+.form-group.small-tbox .p-inputtext {
+  padding: .5rem;
+  font-size: 14px;
+  width: 150px; /* Adjust this value as needed */
+}
+
+.form-group.small-tbox .p-inputtext::placeholder {
+  color: #888888; /* Change this to your desired color */
+}
+
+.dark-theme .form-group.small-tbox .p-inputtext::placeholder {
+  color: white; /* Change this to your desired color */
+}
+
+.small-button .p-button {
+  padding: .5rem .75rem !important;
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 17px;
+}
+
+.form-group.small-tbox .p-dropdown {
+  font-size: 14px;
+
+}
+
+.form-group.small-tbox .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  font-size: 14px;
+  padding: .5rem .75rem;
+}
+
+/* Set the font family and size for the calendar */
+.fc {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Style the header toolbar */
+.fc-toolbar {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+/* Style the buttons in the header toolbar */
+.fc-toolbar button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* Style the title in the center of the header toolbar */
+.fc-toolbar .fc-center {
+  font-weight: bold;
+}
+
+/* Style the event container */
+.fc-event-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+/* Style the event title */
+.fc-event-title {
+  font-weight: bold;
+  white-space: normal;
+}
+
+/* Style the event time */
+.fc-event-time {
+  font-style: italic;
+}
+
+/* Style the event details */
+.fc-event-details {
+  color: #777;
+}
+
+/* Style the event click behavior */
+.fc-event-clickable {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fc-event-clickable:hover {
+  background-color: #e0e0e0;
+}
+
+/* Custom CSS for SweetAlert dialogs */
+.swal2-popup {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.swal2-popup .swal2-title {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.swal2-popup .swal2-html-container {
+  font-size: 15px;
+  /* Decrease the font size for the content */
+  line-height: 1.3;
+  /* Adjust line height for readability */
+  margin-bottom: 8px;
+  /* Reduce spacing below the content */
+  text-align: left;
+  /* Align content to the left */
+}
+
+.swal2-icon {
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.swal2-popup .swal2-confirm {
+  padding: .5rem .75rem !important;
+  font-size: 14px;
+}
+
+.highlight-info {
+  color: black;
+  font-weight: bold;
+  background-color: #f3f2f2 !important;
+}
+
+
+
+.wrap-text {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.ag-theme-quartz .ag-header-cell {
+  background-color: rgb(153, 176, 207);
+  /* Your desired header color */
+  color: black;
+  /* Your desired text color */
+  border-color: rgb(153, 176, 207);
+  /* Ensure border color matches */
+}
+
+body.dark-theme {
+  background-color: #182230;
+  color: #ffffff;
+}
+
+.ag-theme-quartz {
+  font-size: 13px !important;
+  /* Adjust the font size as needed */
+  --ag-background-color: var(--mat-background-color);
+  --ag-header-background-color: var(--mat-primary-color);
+}
+
+#viewInGridLink {
+  color: #3498db;
+  /* Blue color */
+  text-decoration: none;
+  /* Remove underline */
+  font-weight: bold;
+  /* Bold text */
+}
+
+#viewInGridLink:hover {
+  text-decoration: underline;
+  /* Underline on hover */
+  color: #2980b9;
+  /* Darker blue on hover */
+}
+
+.highlight-row {
+  background-color: rgb(181, 236, 156) !important;
+}
+
+p-accordion {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-theme p-accordion {
+  background-color: #182230;
+  color: #ffffff;
+}
+
+p-accordion .p-accordion-header {
+  background-color: inherit;
+  color: inherit;
+}
+
+p-accordion .p-accordion-content {
+  background-color: inherit;
+  color: inherit;
+}
+
+.dark-theme p-accordion .p-accordion-header {
+  background-color: #182230 !important;
+  color: #ffffff !important;
+}
+
+.dark-theme p-accordion .p-accordion-header .p-accordion-header-link {
+  background-color: #182230 !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .content-container {
+  background-color: #182230;
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-panelmenu-header-content {
+  background-color: #182230 !important;
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-panelmenu-content {
+  background-color: #182230 !important;
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-panelmenu-content .p-menuitem-link-active {
+  background-color: #5c5555;
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-panelmenu-content .p-menuitem-link:hover {
+  background-color: #5c5555;
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-menuitem-text {
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-menuitem-icon {
+  color: #fff;
+}
+
+.dark-theme .p-panelmenu .p-icon-wrapper {
+  color: #fff;
+}
+
+.container {
+  display: flex;
+}
+
+.first-div {
+  width: 15%;
+  margin-right: 1%;
+  background-color: white;
+}
+
+.second-div {
+  width: 85%;
+  background-color: white;
+}
+
+.dark-theme .first-div,
+.dark-theme .second-div {
+  background-color: #182230 !important;
+  color: white;
+}
+
+.dark-theme .second-div .p-chart .p-element {
+  background-color: #182230 !important;
+  color: white;
+}
+
+.dark-theme .app-event-calendar {
+  background-color: #182230;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .full-calendar {
+  background-color: #182230;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-toolbar {
+  background-color: #182230;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-view {
+  background-color: #182230;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-list-day-cushion {
+  background-color: #5c5555;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-list-event:hover td {
+  background-color: #a79b9b;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-media {
+  background-color: #182230 !important;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-button {
+  background-color: #534d4d;
+  color: #fff;
+  border: 1px solid #182230;
+}
+
+.dark-theme .app-event-calendar .fc-button-primary {
+  background-color: #534d4d;
+  color: #fff;
+}
+
+.dark-theme .app-event-calendar .fc-button-active {
+  background-color: #383636;
+  color: #fff;
+}
+
+.dark-theme .p-dropdown {
+  background-color: #6d737c !important;
+  color: #fff;
+}
+
+.dark-theme .p-dropdown .p-element {
+  background-color: #6d737c !important;
+  color: #fff;
+}
+
+.dark-theme .p-dropdown .p-dropdown-items-wrapper {
+  background-color: #6d737c !important;
+  color: #fff;
+}
+
+.dark-theme .form-group.small-tbox .p-inputtext {
+  background-color: #6d737c !important;
+  color: #fff;
+}
+
+.dark-theme .p-dropdown .p-dropdown-item:hover {
+  background-color: #b7bcc4 !important;
+  color: #fff;
+}
+
+.dark-theme .p-calendar input::placeholder {
+  color: #fff;
+}
+
+.dark-theme .p-calendar .p-datepicker {
+  background-color: #6d737c;
+  color: #fff;
+}
+
+.p-datepicker table td {
+  padding: 0
+}
+
+.highlight-selected {
+  background-color: rgb(208, 250, 189) !important;
+  color: black !important;
+}
+
+
+.highlight-zero-failures {
+  background-color: rgb(216, 216, 216);
+  color: black !important;
+}
+
+.full-screen-dialog .mat-dialog-container {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 80vh;
+  max-width: 100vw;
+  max-height: 80vh;
+  border-radius: 0;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1 !important;
+}
+
+.dark-theme .mat-mdc-dialog-container .mdc-dialog__surface {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #404a58 !important;
+  color: white;
+}
+
+.dark-theme mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #404a58 !important;
+
+  button {
+    background-color: #007bff;
+    color: white;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+.dark-theme mat-dialog-content {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #404a58 !important;
+}
+
+.dark-theme .mat-mdc-dialog-container .mdc-dialog__title {
+  font-size: 22px !important;
+  color: white !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__title {
+  color: rgb(6, 17, 161) !important;
+  font-size: 22px !important;
+}
+
+mat-dialog-content {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.ag-theme-quartz {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+

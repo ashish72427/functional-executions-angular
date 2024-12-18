@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div style="margin-top: 5px;" fxLayout="row" fxLayoutGap="20px">
+        <br>
+        <div class="form-group small-tbox">
+            <p-dropdown formControlName="projectName" placeholder="Project Name" [options]="projectNames"  [editable]="true"></p-dropdown>
+        </div>
+        <br>
+        <div class="small-button">
+            <button type="submit" pButton label="Apply"></button>
+        </div>
+    </div>
+</form>
+<br>
+<full-calendar class="app-event-calendar" [options]="calendarOptions" (calendarInit)="onCalendarInit($event)"></full-calendar>
+  

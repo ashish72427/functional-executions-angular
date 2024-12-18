@@ -1,0 +1,36 @@
+<h1 mat-dialog-title class="dialog-title">Add Defects</h1>
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field class="form-field">
+    <mat-label>Defects Count</mat-label>
+    <input matInput [(ngModel)]="data.defectsCount" type="number" readonly>
+  </mat-form-field>
+  <div *ngFor="let defect of data.defects; let i = index" class="defect-container">
+    <mat-form-field class="form-field defect-field">
+      <mat-label>Defect Description {{i + 1}}</mat-label>
+      <textarea matInput [(ngModel)]="defect.description"></textarea>
+      <button mat-icon-button class="delete-icon" (click)="removeDefect(i)" matTooltip="Remove Defect">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <button mat-icon-button (click)="addDefect()" matTooltip="Add Defect">
+    <mat-icon>add</mat-icon>
+  </button>
+  <br>
+  <div *ngFor="let link of data.links; let i = index" class="link-container">
+    <mat-form-field class="form-field link-field">
+      <mat-label>Jira Link {{i + 1}}</mat-label>
+      <input matInput [(ngModel)]="link.url" placeholder="Enter Jira link">
+      <button mat-icon-button class="delete-icon" (click)="removeLink(i)" matTooltip="Remove Jira Link">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <button mat-icon-button (click)="addLink()" matTooltip="Add Jira Link">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onNoClick()" class="cancel-button">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" class="add-button">Submit</button>
+</div>

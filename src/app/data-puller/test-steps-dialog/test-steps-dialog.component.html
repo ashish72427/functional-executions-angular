@@ -1,0 +1,11 @@
+<div class="dialog-header" style="display: flex; align-items: center; justify-content: space-between;">
+  <h1 mat-dialog-title><strong>{{ data.testCaseName }}</strong></h1>
+  <div class="small-button" style="display: flex; align-items: center; gap: 10px;">
+    <p-button icon="pi pi-times" (click)="closeDialog()" class="p-button-rounded p-button-danger small-button" aria-label="Close"></p-button>
+  </div>
+</div>
+<mat-dialog-content>
+  <ag-grid-angular class="ag-theme-quartz" style="height: calc(100vh - 100px); width: 100%;" [rowData]="data.testSteps"
+    [columnDefs]="data.columnDefs" [pagination]="true" [paginationPageSize]="paginationPageSize" [paginationPageSizeSelector]="paginationPageSizeSelector">
+  </ag-grid-angular>
+</mat-dialog-content>

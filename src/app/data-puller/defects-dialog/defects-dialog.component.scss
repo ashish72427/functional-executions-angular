@@ -1,0 +1,68 @@
+.dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3f51b5;
+    margin-bottom: 20px;
+  }
+  
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+  
+    .form-field {
+      width: 100%;
+      margin-bottom: 15px;
+  
+      mat-label {
+        font-size: 16px;
+        color: #757575;
+      }
+  
+      input[matInput],
+      textarea[matInput] {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  
+    .cancel-button {
+      margin-left: 10px;
+      font-size: 14px;
+      padding: 8px 16px;
+      color: #f44336;
+    }
+  
+    .add-button {
+      margin-left: 10px;
+      font-size: 14px;
+      padding: 8px 16px;
+      background-color: #3f51b5;
+      color: #fff;
+  
+      &:hover {
+        background-color: #303f9f;
+      }
+    }
+  }
+  
+  .defect-container, .link-container {
+    position: relative;
+  }
+  
+  .defect-field textarea, .link-field input {
+    padding-right: 40px; /* Adjust padding to make space for the delete icon */
+  }
+  
+  .delete-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }

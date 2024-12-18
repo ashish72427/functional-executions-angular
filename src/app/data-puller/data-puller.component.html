@@ -1,0 +1,146 @@
+<!-- Test Suites Accordion -->
+<p-accordion [(activeIndex)]="testSuitesActiveIndex" [ngClass]="{'dark-theme': isDarkTheme}">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <span>Test Suites</span>
+                <div *ngIf="testSuitesActiveIndex === 0" fxLayout="row" fxLayoutGap="20px">
+                    <form [formGroup]="formGroup">
+                        <div fxLayout="row" fxLayoutGap="20px">
+                            <div class="form-group small-tbox">
+                                <p-dropdown formControlName="projectName" placeholder="Project Name"
+                                    [options]="this.dataService.projectNames" (click)="stopEvent($event)"
+                                    [editable]="true"></p-dropdown>
+                            </div>
+                            <div class="form-group small-tbox">
+                                <p-calendar type="date" placeholder="Start Date" dateFormat="dd.mm.yy"
+                                    formControlName="startDate" (click)="stopEvent($event)"></p-calendar>
+                            </div>
+                            <div class="form-group small-tbox">
+                                <p-calendar type="date" placeholder="End Date" dateFormat="dd.mm.yy"
+                                    formControlName="endDate" (click)="stopEvent($event)"></p-calendar>
+                            </div>
+                            <div class="small-button"><button type="submit" pButton pRipple (click)="onSubmit($event)"
+                                    class="p-button-success">Apply</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tsbuttons" *ngIf="testSuitesActiveIndex === 0" fxLayout="row" fxLayoutGap="20px">
+                    <!-- <p-button class="small-button" pRipple (click)="onReset($event); $event.stopPropagation()"
+                        label="Reset" severity="warning" [outlined]="true"></p-button> -->
+                    <!-- <p-button class="small-button" pRipple (click)="onUpdate($event); $event.stopPropagation()"
+                        label="Update" severity="info" [outlined]="true"></p-button> -->
+                    <!-- <p-button class="small-button" pRipple (click)="onDelete($event); $event.stopPropagation()"
+                        label="Delete" severity="danger" [outlined]="true"></p-button> -->
+                    <p-button class="small-button" pRipple (click)="onDelete($event); $event.stopPropagation()"
+                         severity="danger" icon="pi pi-trash"></p-button>
+                    <div class="small-button">
+                        <button *ngIf="!this.isLoading" type="button" pButton pRipple icon="pi pi-file-excel"
+                            (click)="onBtExport(); $event.stopPropagation()" class="p-button-success mr-2"
+                            tooltipPosition="bottom"></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <div fxLayout="column" fxLayoutGap="5px" style="margin-top: 5px;">
+            <div fxLayout="row" fxLayoutGap="5px" style="margin-top: 5px;">
+                <div fxFlex="40" fxLayoutAlign="start">
+                    <p-toast></p-toast>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1" *ngIf="this.isLoading" class="spinner-container">
+                    <div class="spinner"><app-loading-spinner></app-loading-spinner></div>
+                </div>
+                <div class="small-button" style="display: flex; align-items: center; gap: 10px;">
+                    <label *ngIf="!this.isLoading" class="small-font">
+                        <input type="checkbox" [(ngModel)]="showUnanalyzed" (change)="onToggleUnanalyzed()" />
+                        Show Unanalyzed Records
+                    </label>
+                </div>
+                <div class="col-1" *ngIf="isTestCasesLoading" class="spinner-container">
+                    <div class="spinner"><app-loading-spinner></app-loading-spinner></div>
+                </div>
+                <div class="col-1">
+                    <ag-grid-angular  class="ag-theme-quartz"
+                        style="height: 300px; width: 100%; margin: 0;" [rowData]="filteredRowData"
+                        [columnDefs]="colDefs" [rowSelection]="'multiple'" [suppressRowClickSelection]="true"
+                        [pagination]="pagination" (rowClicked)="onTestSuitesRowClicked($event)"
+                        (rowSelected)="onTestSuitesRowSelected($event)" [paginationPageSize]="paginationPageSize"
+                        [paginationPageSizeSelector]="paginationPageSizeSelector" [defaultColDef]="defaultColDef"
+                        (gridReady)="onGridReady($event)" (firstDataRendered)="onFirstDataRendered($event)">
+                    </ag-grid-angular>
+                </div>
+            </div>
+            <p *ngIf="!this.isLoading" style="font-size: 11px; font-style: italic; color:#999">Note: To optimize performance, the portal defaults to retrieving records from the past week. If no date range is specified, it will fetch records for the entire year. Please specify the date range carefully, as the API can return a maximum of 200 records.</p>
+        </div>
+    </p-accordionTab>
+</p-accordion>
+<br>
+
+<!-- <div class="spinner" *ngIf="this.isTestStepsLoading"><app-loading-spinner></app-loading-spinner></div> -->
+<!-- Test Cases Accordion -->
+<div *ngIf="currProjectName?.length">
+    <span style="color: rgb(85, 145, 146);">{{ currProjectName }} - {{ currSuiteName }}</span>
+</div>
+<br>
+<p-accordion [(activeIndex)]="testCasesActiveIndex" [ngClass]="{'dark-theme': isDarkTheme}">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <span>Test Cases</span>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div *ngIf="testCasesActiveIndex === 0" fxLayout="row" fxLayoutGap="20px">
+                    <p-toast></p-toast>
+                    <!-- <p-button class="small-button" pRipple (click)="onTCReset($event); $event.stopPropagation()"
+                        label="Reset" severity="warning" [outlined]="true"></p-button> -->
+                    <p-button class="small-button" pRipple (click)="onTCUpdate($event); $event.stopPropagation()"
+                        label="Update" severity="info" [outlined]="true"></p-button>
+                    <!-- <p-button class="small-button" pRipple (click)="onTCDelete($event); $event.stopPropagation()"
+                        label="Delete" severity="danger" [outlined]="true"></p-button> -->
+                    <p-button class="small-button" pRipple (click)="openDialog($event); $event.stopPropagation()"
+                        label="Add/Edit Defects" severity="info" [outlined]="true"></p-button>
+                    <div class="small-button">
+                        <button *ngIf="currTestSuite?.length" type="button" pButton pRipple icon="pi pi-file-excel"
+                            (click)="onTCBtExport(); $event.stopPropagation()" class="p-button-success mr-2"
+                            tooltipPosition="bottom"></button>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <span>Application Failures: {{ this.dataService.appFailures }}</span>
+                    <span>Script Failures: {{ this.dataService.scFailures }}</span>
+                    <span>Defects: {{ this.currDefectCount || 0 }}</span>
+                </div>
+            </div>
+        </ng-template>
+        <div style="margin-top: 5px; position: relative;" fxLayout="column" fxLayoutGap="5px">
+            <div class="row">
+                <div class="col-1" *ngIf="isTestStepsLoading" class="spinner-container">
+                    <div class="spinner"><app-loading-spinner></app-loading-spinner></div>
+                </div>
+                <div class="col-1" *ngIf="currTestSuite?.length">
+                    <!-- <ag-grid-angular class="ag-theme-quartz"
+                        style="height: 300px; width: 100%;" [suppressAggFuncInHeader]="true" [rowData]="currTestSuite"
+                        [columnDefs]="casescolDefs" [components]="frameworkComponents" [rowSelection]="'multiple'"
+                        [suppressRowClickSelection]="true" [pagination]="pagination"
+                        [paginationPageSize]="paginationPageSize" [gridOptions]="gridTCOptions"
+                        (rowSelected)="onTestCasesRowSelected($event)"
+                        [paginationPageSizeSelector]="paginationPageSizeSelector" [defaultColDef]="defaultColDef"
+                        (gridReady)="onTestCasesGridReady($event)">
+                    </ag-grid-angular> -->
+                    <ag-grid-angular class="ag-theme-quartz" style="height: 300px; width: 100%;"
+                        [suppressAggFuncInHeader]="true" [rowData]="currTestSuite" [columnDefs]="casescolDefs"
+                        [components]="frameworkComponents" [rowSelection]="'multiple'"
+                        [suppressRowClickSelection]="true" [pagination]="pagination"
+                        [paginationPageSize]="paginationPageSize" [gridOptions]="gridTCOptions"
+                        [paginationPageSizeSelector]="paginationPageSizeSelector" [defaultColDef]="defaultColDef"
+                        (gridReady)="onTestCasesGridReady($event)">
+                    </ag-grid-angular>
+                </div>
+            </div>
+            <!-- <p *ngIf="currTestSuite?.length" style="font-size: 11px; font-style: italic; color:#999">
+                Note: After marking the failure type of the test cases, please ensure you select the associated rows
+                using the row selection checkboxes before clicking the update button.
+            </p> -->
+        </div>
+    </p-accordionTab>
+</p-accordion>

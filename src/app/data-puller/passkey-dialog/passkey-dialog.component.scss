@@ -1,0 +1,32 @@
+.my-container {
+    background-color: #f4f4f4;
+    border: 1px solid #dcdcdc;
+    padding: 1px;
+  }
+  
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
