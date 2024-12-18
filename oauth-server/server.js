@@ -16,8 +16,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-const clientId = '6e0418cf1aa34b91b4c219c3b68d1e6f';
-const clientSecret = '6773b68BCFa241ED9c548D245d23A2B4';
+// const clientId 
+// const clientSecret 
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -596,8 +596,8 @@ app.use((err, req, res, next) => {
 });
 
 // Load SSL certificates
-const privateKey = fs.readFileSync(path.join(__dirname, 'cert', 'certkey.key'));
-const certificate = fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'));
+const privateKey = 
+const certificate = 
 
 const credentials = {
     key: privateKey,
